@@ -1,0 +1,26 @@
+<div class="quiz__container">
+  <div class="quiz__logo">
+    <img src="assets/imgs/buzzfeed-logo.svg" width="200" alt="" />
+    <small>simple quiz web application | angular</small>
+    <h3>{{ title }}</h3>
+  </div>
+  <div *ngIf="!finished" class="quiz__questions">
+    <h3>{{ questionSelected.question }}</h3>
+  </div>
+  <div *ngIf="!finished" class="quiz__options">
+    <button
+      (click)="playerChoose(option.alias)"
+      *ngFor="let option of questionSelected.options; let i = index"
+      class="btn-option"
+    >
+      {{ option.name }}
+    </button>
+  </div>
+  <div *ngIf="finished" class="quiz__results">
+    <h1>O seu resultado é:</h1>
+    <p>{{ answerSelected }}</p>
+  </div>
+  <button *ngIf="finished" class="btn-return" (click)="refresh()">
+    Reiniciar
+  </button>
+</div>
